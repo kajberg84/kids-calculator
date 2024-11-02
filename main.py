@@ -9,6 +9,9 @@ Builder.load_file('layout.kv')
 class MainLayout(BoxLayout):
     def open_settings(self):
         print("settings button clicked")
+
+    def open_profile(self):
+        print("Profile button clicked")
     pass
 
 class KidsCalculatorApp(App):

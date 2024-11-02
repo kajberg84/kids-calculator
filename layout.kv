@@ -1,9 +1,8 @@
-# layout.kv
 
 <MainLayout>:
     orientation: 'vertical'
 
-    # Header section with 10% height
+# Header section with 10% height
     BoxLayout:
         size_hint_y: 0.1  # 10% of total height
         canvas.before:
@@ -12,21 +11,42 @@
             Rectangle:
                 pos: self.pos
                 size: self.size
+
+# Left button
+        Button:
+            text: "Set"
+            size_hint: None, None
+            size: self.parent.height * 0.8, self.parent.height * 0.8  # Set square size
+            pos_hint: {"center_y": 0.5}  # Center button vertically within the header
+            on_press: root.open_settings()  # Call the open_settings function
+
+# Logo in the middle
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_x: None   # Disable width scaling
+            width: self.parent.height * 0.8  # Width matches the height to keep it square
+            pos_hint: {"center_x": 0.5}  # Center vertically
+            Image:
+                source: 'img/star_logo.jpg'
+                size_hint: None, None
+                size: self.parent.height * 0.8, self.parent.height * 0.8  # Square logo
+                allow_stretch: True  # Allow the logo to scale while keeping aspect ratio
+
+# Right button.
+        Button:
+            text: "Prof"
+            size_hint: None, None
+            size: self.parent.height * 0.8, self.parent.height * 0.8  # Set square size
+            pos_hint: {"center_y": 0.5}  # Center button vertically within the header
+            on_press: root.open_profile()
+
         Label:
             text: "Header Bar"
             font_size: 20
             halign: 'center'
             valign: 'middle'
 
-        # Add a button in the header bar
-        Button:
-            text: "Set"
-            size_hint: None, None
-            size: self.parent.height * 0.8, self.parent.height * 0.8
-            pos_hint: {"center_y": 0.5}
-            on_press: root.open_settings()  # Call the open_settings function
-
-    # Timer section with 10% height
+# Timer section with 10% height
     BoxLayout:
         size_hint_y: 0.1  # 10% of total height
         canvas.before:
@@ -36,12 +56,12 @@
                 pos: self.pos
                 size: self.size
         Label:
-            text: "button settings"
+            text: "calculater choice"
             font_size: 40
             halign: 'center'
             valign: 'middle'
 
-    # Bottom section, 80%
+    # Bottom section, split 80% each vertically
     BoxLayout:
         orientation: 'horizontal'
         size_hint_y: 0.8  # Remaining 50% of total height
